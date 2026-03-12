@@ -8,7 +8,7 @@ class AIAnalyst:
     def __init__(self):
         api_key = st.secrets.get("GENAI_API_KEY")
         if not api_key:
-            raise ValueError("GENAI_API_KEY가 secrets.toml에 설정되어 있지 않습니다.")
+            raise ValueError("GENAI_API_KEY가 설정되지 않았습니다. 로컬 환경의 경우 `.streamlit/secrets.toml`을 확인하거나, Streamlit Cloud의 경우 'App settings > Secrets'에 API 키를 등록해주세요.")
         genai.configure(api_key=api_key)
         # Gemini 2.0 Flash Lite 모델 사용 (무료 티어 할당량 문제 완화 및 실제 지원 모델 채택)
         self.model = genai.GenerativeModel('gemini-2.0-flash-lite') 
